@@ -1,13 +1,9 @@
-import { unflatten } from './utils';
+import unflatten from "./utils";
 
 export default class {
-  /**
-   * Bail if window is undefined.
-   */
-  // if (typeof window === 'undefined') return;
-
   constructor(options) {
-    this.intersectionObserver = new IntersectionObserver((entries, observer) => {
+    this.intersectionObserver = new IntersectionObserver(
+      (entries, observer) => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
 
@@ -33,17 +29,13 @@ export default class {
   }
 
   observe(nodes) {
-    unflatten(nodes).forEach(node =>
-      this.intersectionObserver.observe(node)
-    );
+    unflatten(nodes).forEach(node => this.intersectionObserver.observe(node));
 
     return this;
   }
 
   unobserve(nodes) {
-    unflatten(nodes).forEach(node =>
-      this.intersectionObserver.unobserve(node)
-    );
+    unflatten(nodes).forEach(node => this.intersectionObserver.unobserve(node));
 
     return this;
   }
@@ -52,7 +44,7 @@ export default class {
     unflatten(nodes).forEach(node =>
       this.subscribers.set(node, {
         once: false,
-        callback: callback
+        callback
       })
     );
 
@@ -63,18 +55,7 @@ export default class {
     unflatten(nodes).forEach(node =>
       this.subscribers.set(node, {
         once: true,
-        callback: callback
-      })
-    );
-
-    return this;
-  }
-
-  subscribeOnEnter(nodes) {
-    unflatten(nodes).forEach(node =>
-      this.subscribers.set(node, {
-        once: true,
-        callback: callback
+        callback
       })
     );
 

@@ -1,5 +1,6 @@
-//import resolve from 'rollup-plugin-node-resolve';
+// import resolve from 'rollup-plugin-node-resolve';
 // import commonjs from 'rollup-plugin-commonjs';
+import eslint from 'rollup-plugin-eslint';
 import babel from 'rollup-plugin-babel';
 import pkg from './package.json';
 
@@ -7,10 +8,11 @@ export default [
 	// browser-friendly UMD build
 	{
 		entry: 'src/main.js',
-		dest: pkg.browser,
+		dest: pkg.main,
 		format: 'umd',
 		moduleName: 'viewObserver',
 		plugins: [
+			eslint(),
 			// resolve(), // so Rollup can find `ms`
 			babel({
 				exclude: ['node_modules/**']
@@ -29,6 +31,7 @@ export default [
 			{ dest: pkg.module, format: 'es' }
 		],
 		plugins: [
+			eslint(),
 			babel({
 				exclude: ['node_modules/**']
 			})
