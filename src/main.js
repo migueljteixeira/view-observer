@@ -65,11 +65,7 @@ export default class {
    */
   subscribe(nodes, enterCallback, leaveCallback) {
     unflatten(nodes).forEach(node =>
-      this.subscribers.set(node, {
-        once: false,
-        enterCallback,
-        leaveCallback
-      })
+      this.subscribers.set(node, { once: false, enterCallback, leaveCallback })
     );
 
     return this;
@@ -84,10 +80,7 @@ export default class {
    */
   subscribeOnce(nodes, enterCallback) {
     unflatten(nodes).forEach(node =>
-      this.subscribers.set(node, {
-        once: true,
-        enterCallback
-      })
+      this.subscribers.set(node, { once: true, enterCallback })
     );
 
     return this;

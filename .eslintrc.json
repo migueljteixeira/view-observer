@@ -3,7 +3,6 @@
         "airbnb-base",
         "prettier"
     ],
-    "root": true,
     "parser": "babel-eslint",
     "parserOptions": {
         "sourceType": "module"

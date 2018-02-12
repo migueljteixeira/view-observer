@@ -1,10 +1,26 @@
 {
-  "name": "view-observer",
+  "author": "Miguel Teixeira <mteixeira5@gmail.com>",
+  "license": "MIT",
   "version": "0.1.0",
+  "name": "view-observer",
   "main": "dist/view-observer.umd.js",
   "module": "dist/view-observer.esm.js",
   "source": "src/main.js",
   "repository": "migueljteixeira/view-observer",
+  "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch",
+    "test": "node test/test.js",
+    "pretest": "npm run build"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "keywords": [
+    "intersection observer",
+    "view observer"
+  ],
   "devDependencies": {
     "babel-eslint": "^8.2.1",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -13,14 +29,5 @@
     "eslint-plugin-prettier": "^2.6.0",
     "microbundle": "^0.4.3",
     "prettier": "^1.10.2"
-  },
-  "scripts": {
-    "build": "microbundle",
-    "dev": "microbundle watch",
-    "test": "node test/test.js",
-    "pretest": "npm run build"
-  },
-  "files": [
-    "dist"
-  ]
+  }
 }
