@@ -5,18 +5,21 @@ export default class {
     this.intersectionObserver = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-
           const node = entry.target;
 
-          if (this.subscribers.has(node)) {
-            const subscriber = this.subscribers.get(node);
-            subscriber.callback(entry);
+          // If there are no subscribers, bail
+          if (!this.subscribers.has(node)) return;
+
+          const subscriber = this.subscribers.get(node);
+          if (entry.isIntersecting && subscriber.enterCallback !== undefined) {
+            subscriber.enterCallback(entry);
 
             if (subscriber.once) {
               observer.unobserve(node);
               this.subscribers.delete(subscriber);
             }
+          } else if (subscriber.leaveCallback !== undefined) {
+            subscriber.leaveCallback(entry);
           }
         });
       },
@@ -28,44 +31,81 @@ export default class {
     return this;
   }
 
+  /**
+   *
+   *
+   * @param {any} nodes
+   * @returns
+   */
   observe(nodes) {
     unflatten(nodes).forEach(node => this.intersectionObserver.observe(node));
 
     return this;
   }
 
+  /**
+   *
+   *
+   * @param {any} nodes
+   * @returns
+   */
   unobserve(nodes) {
     unflatten(nodes).forEach(node => this.intersectionObserver.unobserve(node));
 
     return this;
   }
 
-  subscribe(nodes, callback) {
+  /**
+   *
+   *
+   * @param {any} nodes
+   * @param {any} enterCallback
+   * @param {any} leaveCallback
+   * @returns
+   */
+  subscribe(nodes, enterCallback, leaveCallback) {
     unflatten(nodes).forEach(node =>
       this.subscribers.set(node, {
         once: false,
-        callback
+        enterCallback,
+        leaveCallback
       })
     );
 
     return this;
   }
 
-  subscribeOnce(nodes, callback) {
+  /**
+   *
+   *
+   * @param {any} nodes
+   * @param {any} enterCallback
+   * @returns
+   */
+  subscribeOnce(nodes, enterCallback) {
     unflatten(nodes).forEach(node =>
       this.subscribers.set(node, {
         once: true,
-        callback
+        enterCallback
       })
     );
 
     return this;
   }
 
+  /**
+   *
+   *
+   */
   disconnect() {
     this.intersectionObserver.disconnect();
   }
 
+  /**
+   *
+   *
+   * @returns
+   */
   takeRecords() {
     return this.intersectionObserver.takeRecords();
   }
