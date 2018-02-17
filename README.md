@@ -2,6 +2,8 @@
 
 Wrapper around [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver) with added functionality.
 
+[![Build Status](https://img.shields.io/circleci/project/migueljteixeira/view-observer/master.svg)](https://circleci.com/gh/migueljteixeira/view-observer/tree/master)
+[![Coverage Status](https://img.shields.io/codecov/c/github/migueljteixeira/view-observer/master.svg)](https://codecov.io/github/migueljteixeira/view-observer?branch=master)
 [![Version](https://img.shields.io/npm/v/view-observer.svg)](https://www.npmjs.com/package/view-observer)
 [![License](https://img.shields.io/npm/l/view-observer.svg)](https://oss.ninja/mit/migueljteixeira)
 
