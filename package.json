@@ -1,28 +1,39 @@
 {
-  "version": "0.1.1",
-  "license": "MIT",
-  "author": "Miguel Teixeira <mteixeira5@gmail.com>",
   "name": "view-observer",
+  "version": "0.1.1",
+  "description": "Wrapper around Intersection Observer with added functionality.",
   "main": "dist/view-observer.umd.js",
   "module": "dist/view-observer.esm.js",
-  "source": "src/main.js",
-  "repository": "migueljteixeira/view-observer",
+  "unpkg": "dist/view-observer.umd.js",
+  "jsdelivr": "dist/view-observer.umd.js",
+  "files": [
+    "src",
+    "dist/*.js"
+  ],
   "scripts": {
     "build": "microbundle",
     "dev": "microbundle watch",
-    "test": "node test/test.js",
+    "test": "ava",
     "pretest": "npm run build"
   },
-  "files": [
-    "src",
-    "dist"
-  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/migueljteixeira/view-observer.git"
+  },
   "keywords": [
     "intersection observer",
     "view observer"
   ],
+  "author": "Miguel Teixeira <mteixeira5@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/migueljteixeira/view-observer/issues"
+  },
+  "homepage": "https://github.com/migueljteixeira/view-observer#readme",
   "devDependencies": {
+    "ava": "^0.25.0",
     "babel-eslint": "^8.2.1",
+    "codecov": "^3.0.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
