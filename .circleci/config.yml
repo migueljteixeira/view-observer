@@ -40,7 +40,7 @@ jobs:
 
       - run:
          name: report coverage stats
-         command: ./node_modules/.bin/codecov
+         command: cat ./coverage/lcov.info | ./node_modules/.bin/codecov
 
 workflows:
   version: 2
