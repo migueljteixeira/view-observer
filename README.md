@@ -1,6 +1,6 @@
 # view-observer
 
-Wrapper around [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver) with added functionality.
+> Wrapper around [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver) with added functionality.
 
 [![Build Status](https://img.shields.io/circleci/project/migueljteixeira/view-observer/master.svg)](https://circleci.com/gh/migueljteixeira/view-observer/tree/master)
 [![Coverage Status](https://img.shields.io/codecov/c/github/migueljteixeira/view-observer/master.svg)](https://codecov.io/github/migueljteixeira/view-observer?branch=master)
@@ -12,6 +12,8 @@ Wrapper around [Intersection Observer](https://developer.mozilla.org/en-US/docs/
 ```
 $ npm install view-observer
 ```
+
+Also available on [jsdelivr](https://cdn.jsdelivr.net/npm/view-observer) and [unpkg](https://unpkg.com/view-observer).
 
 ## Usage
 
