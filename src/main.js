@@ -1,6 +1,6 @@
 import unflatten from "./utils";
 
-export default class {
+class ViewObserver {
   constructor(options) {
     this.intersectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -103,3 +103,5 @@ export default class {
     return this.intersectionObserver.takeRecords();
   }
 }
+
+export default viewObserver = () => new ViewObserver();

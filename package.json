@@ -1,7 +1,7 @@
 {
-  "author": "Miguel Teixeira <mteixeira5@gmail.com>",
-  "license": "MIT",
   "version": "0.1.0",
+  "license": "MIT",
+  "author": "Miguel Teixeira <mteixeira5@gmail.com>",
   "name": "view-observer",
   "main": "dist/view-observer.umd.js",
   "module": "dist/view-observer.esm.js",
