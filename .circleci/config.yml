@@ -14,14 +14,13 @@ jobs:
 
       - restore_cache:
           keys:
-          - v1-view-observer-{{ .Branch }}-{{ checksum "package.json" }}
-          - v1-view-observer-{{ .Branch }}
+          - v1-view-observer-{{ checksum "package.json" }}
           - v1-view-observer-
 
       - run: npm install
 
       - save_cache:
-          key: v1-view-observer-{{ .Branch }}-{{ checksum "package.json" }}
+          key: v1-view-observer-{{ checksum "package.json" }}
           paths:
             - node_modules
       
