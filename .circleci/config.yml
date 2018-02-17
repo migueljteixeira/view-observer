@@ -1,29 +1,51 @@
 version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/node:7.10
 
-    working_directory: ~/project
+defaults: &defaults
+  working_directory: ~/project
+  docker:
+    - image: circleci/node:7.10
+
+jobs:
+  install:
+    <<: *defaults
 
     steps:
       - checkout
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          - v1-view-observer-{{ .Branch }}-{{ checksum "package.json" }}
+          - v1-view-observer-{{ .Branch }}
+          - v1-view-observer-
 
-      - run: yarn
+      - run: npm install
 
       - save_cache:
+          key: v1-view-observer-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-        
-      - run: yarn test
+      
+      - persist_to_workspace:
+          root: ~/project
 
-test:
-  post:
-    - bash <(curl -s https://codecov.io/bash)
+  test-cover:
+    <<: *defaults
+
+    steps:
+      - attach_workspace:
+          at: ~/project
+
+      - run: npm run test
+
+      - run:
+         name: report coverage stats
+         command: ./node_modules/.bin/codecov
+
+workflows:
+  version: 2
+  install-and-parallel-test:
+    jobs:
+      - install
+      - test-cover:
+          requires:
+            - install
