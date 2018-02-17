@@ -24,6 +24,6 @@ jobs:
         
       - run: yarn test
 
-  test:
-    post:
-      - bash <(curl -s https://codecov.io/bash)
+test:
+  post:
+    - ./bin/codecov -f coverage/coverage.json
