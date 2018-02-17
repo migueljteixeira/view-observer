@@ -1,46 +1,69 @@
-# rollup-starter-lib
+# view-observer
 
-This repo contains a bare-bones example of how to create a library using Rollup, including importing a module from `node_modules` and converting it from CommonJS.
+Wrapper around [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver) with added functionality.
 
-We're creating a library called `how-long-till-lunch`, which usefully tells us how long we have to wait until lunch, using the [ms](https://github.com/zeit/ms) package:
+[![Build Status](https://img.shields.io/circleci/project/vuejs/vue/dev.svg)](https://circleci.com/gh/vuejs/vue/tree/dev)
+[![Coverage Status](https://img.shields.io/codecov/c/github/vuejs/vue/dev.svg)](https://codecov.io/github/vuejs/vue?branch=dev)
+[![Version](https://img.shields.io/npm/v/view-observer.svg)](https://www.npmjs.com/package/view-observer)
+[![License](https://img.shields.io/npm/l/view-observer.svg)](https://oss.ninja/mit/migueljteixeira)
+
+## Install
+
+```
+$ npm install view-observer
+```
+
+## Usage
 
 ```js
-console.log('it will be lunchtime in ' + howLongTillLunch());
+import viewObserver from 'view-observer'
+
+var footer = document.getElementById('footer')
+var images = document.getElementsByClassName('images')
+
+viewObserver().observe([footer, images])
+	.subscribeOnce(footer, () => {
+		console.log('We just reached the footer! This callback is called only once')
+	});
+	.subscribe(images, (element) => {
+		console.log(`Image ${element} just entered the viewport!`)
+	}, (element) => {
+		console.log(`Image ${element} just leaved the viewport!`)
+	})
 ```
 
-## Getting started
+## API
 
-Clone this repository and install its dependencies:
+### `observe(elements)`
 
-```bash
-git clone https://github.com/rollup/rollup-starter-lib
-cd rollup-starter-lib
-npm install
-```
+Adds an element (or a collection of elements) to the set of target elements being watched by the IntersectionObserver.
 
-`npm run build` builds the library to `dist`, generating three files:
+Returns the `viewObserver` instance.
 
-* `dist/how-long-till-lunch.cjs.js`
-    A CommonJS bundle, suitable for use in Node.js, that `require`s the external dependency. This corresponds to the `"main"` field in package.json
-* `dist/how-long-till-lunch.esm.js`
-    an ES module bundle, suitable for use in other people's libraries and applications, that `import`s the external dependency. This corresponds to the `"module"` field in package.json
-* `dist/how-long-till-lunch.umd.js`
-    a UMD build, suitable for use in any environment (including the browser, as a `<script>` tag), that includes the external dependency. This corresponds to the `"browser"` field in package.json
+#### elements
+Type: `String` `Array`
 
-`npm run dev` builds the library, then keeps rebuilding it whenever the source files change using [rollup-watch](https://github.com/rollup/rollup-watch).
+---
 
-`npm test` builds the library, then tests it.
+### `subscribe(elements, [enterCallback, leaveCallback])`
 
-*Note that you would often include the `dist` folder in your [.gitignore](https://github.com/rollup/rollup-starter-lib/blob/master/.gitignore) file, but they are included here for ease of illustration.*
+Subscribes for changes in the observed elements.
+The function `enterCallback` is called when the target `element` enters the specified threshold. `leaveCallback` is called when the target `element` leaves the specified threshold.
 
+Returns the `viewObserver` instance.
 
-## Variations
+#### elements
 
-* [babel](https://github.com/rollup/rollup-starter-lib/tree/babel) — illustrates writing the source code in ES2015 and transpiling it for older environments with [Babel](https://babeljs.io/)
-* [buble](https://github.com/rollup/rollup-starter-lib/tree/buble) — similar, but using [Bublé](https://buble.surge.sh/) which is a faster alternative with less configuration
+Type: `String` `Array`
 
+#### enterCallback
 
+Type: `Function`
+
+#### leaveCallback
+
+Type: `Function`
 
 ## License
 
-[MIT](LICENSE).
+[MIT](https://oss.ninja/mit/migueljteixeira)
