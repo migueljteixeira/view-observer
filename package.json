@@ -1,24 +1,33 @@
 {
+  "version": "0.1.1",
+  "license": "MIT",
+  "author": "Miguel Teixeira <mteixeira5@gmail.com>",
   "name": "view-observer",
-  "version": "0.1.0",
-  "module": "dist/how-long-till-lunch.esm.js",
-  "browser": "dist/how-long-till-lunch.umd.js",
-  "devDependencies": {
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "rollup": "^0.46.0",
-    "rollup-plugin-babel": "^2.7.1",
-    "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-node-resolve": "^3.0.0"
-  },
+  "main": "dist/view-observer.umd.js",
+  "module": "dist/view-observer.esm.js",
+  "source": "src/main.js",
+  "repository": "migueljteixeira/view-observer",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "build": "microbundle",
+    "dev": "microbundle watch",
     "test": "node test/test.js",
     "pretest": "npm run build"
   },
   "files": [
+    "src",
     "dist"
-  ]
+  ],
+  "keywords": [
+    "intersection observer",
+    "view observer"
+  ],
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "microbundle": "^0.4.3",
+    "prettier": "^1.10.2"
+  }
 }
