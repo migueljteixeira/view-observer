@@ -2,29 +2,26 @@ import unflatten from "./utils";
 
 class ViewObserver {
   constructor(options) {
-    this.intersectionObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach(entry => {
-          const node = entry.target;
+    this.intersectionObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        const node = entry.target;
 
-          // If there are no subscribers, bail
-          if (!this.subscribers.has(node)) return;
+        // If there are no subscribers, bail
+        if (!this.subscribers.has(node)) return;
 
-          const subscriber = this.subscribers.get(node);
-          if (entry.isIntersecting && subscriber.enterCallback !== undefined) {
-            subscriber.enterCallback(entry);
+        const subscriber = this.subscribers.get(node);
+        if (entry.isIntersecting && subscriber.enterCallback !== undefined) {
+          subscriber.enterCallback(entry);
 
-            if (subscriber.once) {
-              observer.unobserve(node);
-              this.subscribers.delete(subscriber);
-            }
-          } else if (subscriber.leaveCallback !== undefined) {
-            subscriber.leaveCallback(entry);
+          if (subscriber.once) {
+            observer.unobserve(node);
+            this.subscribers.delete(subscriber);
           }
-        });
-      },
-      options
-    );
+        } else if (subscriber.leaveCallback !== undefined) {
+          subscriber.leaveCallback(entry);
+        }
+      });
+    }, options);
 
     this.subscribers = new Map();
 

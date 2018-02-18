@@ -3,7 +3,6 @@
 > Wrapper around [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver) with added functionality.
 
 [![Build Status](https://img.shields.io/circleci/project/migueljteixeira/view-observer/master.svg)](https://circleci.com/gh/migueljteixeira/view-observer/tree/master)
-[![Coverage Status](https://img.shields.io/codecov/c/github/migueljteixeira/view-observer/master.svg)](https://codecov.io/github/migueljteixeira/view-observer?branch=master)
 [![Version](https://img.shields.io/npm/v/view-observer.svg)](https://www.npmjs.com/package/view-observer)
 [![License](https://img.shields.io/npm/l/view-observer.svg)](https://oss.ninja/mit/migueljteixeira)
 
@@ -36,6 +35,18 @@ viewObserver().observe([footer, images])
 
 ## API
 
+### `viewObserver([options])`
+
+Creates and returns a new `viewObserver` instance.
+
+#### options
+
+Type: `Object` { `root`, `rootMargin`, `threshold` }
+
+An optional object which customizes the intersection observer itself, as described [here](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver).
+
+## Methods
+
 ### `observe(elements)`
 
 Adds an element (or a collection of elements) to the set of target elements being watched by the IntersectionObserver.
@@ -44,8 +55,6 @@ Returns the `viewObserver` instance.
 
 #### elements
 Type: `String` `Array`
-
----
 
 ### `subscribe(elements, [enterCallback, leaveCallback])`
 
@@ -58,11 +67,7 @@ Returns the `viewObserver` instance.
 
 Type: `String` `Array`
 
-#### enterCallback
-
-Type: `Function`
-
-#### leaveCallback
+#### enterCallback, leaveCallback
 
 Type: `Function`
 
