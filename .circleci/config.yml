@@ -28,25 +28,3 @@ jobs:
           root: ~/project
           paths:
             - view-observer
-
-  test-cover:
-    <<: *defaults
-
-    steps:
-      - attach_workspace:
-          at: ~/project
-
-      - run: npm run test
-
-      - run:
-         name: report coverage stats
-         command: ./node_modules/.bin/codecov
-
-workflows:
-  version: 2
-  install-and-parallel-test:
-    jobs:
-      - install
-      - test-cover:
-          requires:
-            - install
