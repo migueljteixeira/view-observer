@@ -28,3 +28,9 @@ jobs:
           root: ~/project
           paths:
             - view-observer
+
+workflows:
+  version: 2
+  install-and-parallel-test:
+    jobs:
+      - install
