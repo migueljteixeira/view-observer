@@ -94,6 +94,7 @@ class ViewObserver {
   /**
    * Returns an array of IntersectionObserverEntry objects, one for each targeted element
    * which has experienced an intersection change since the last time the intersections were checked
+   * @returns
    */
   takeRecords() {
     return this.intersectionObserver.takeRecords();

@@ -24,7 +24,7 @@ var images = document.getElementsByClassName('images')
 
 viewObserver().observe([footer, images])
 	.subscribeOnce(footer, () => {
-		console.log('We just reached the footer! This callback is called only once')
+		console.log('We just reached the footer! This callback is called at most once')
 	})
 	.subscribe(images, (element) => {
 		console.log(`Image ${element} just entered the viewport!`)
