@@ -101,4 +101,4 @@ class ViewObserver {
   }
 }
 
-export default viewObserver = () => new ViewObserver();
+export default () => new ViewObserver();

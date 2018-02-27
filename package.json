@@ -2,6 +2,7 @@
   "name": "view-observer",
   "version": "0.1.3",
   "description": "Wrapper around Intersection Observer with added functionality.",
+  "source": "src/main.js",
   "main": "dist/view-observer.umd.js",
   "module": "dist/view-observer.esm.js",
   "unpkg": "dist/view-observer.umd.js",
@@ -11,10 +12,8 @@
     "dist/*.js"
   ],
   "scripts": {
-    "build": "microbundle",
-    "dev": "microbundle watch",
-    "test": "ava",
-    "pretest": "npm run build"
+    "build": "microbundle --sourcemap=false",
+    "dev": "microbundle watch"
   },
   "repository": {
     "type": "git",
