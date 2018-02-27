@@ -24,12 +24,12 @@ var images = document.getElementsByClassName('images')
 
 viewObserver().observe([footer, images])
 	.subscribeOnce(footer, () => {
-		console.log('We just reached the footer! This callback is called only once')
+		console.log('We just reached the footer! This callback is called at most once')
 	})
 	.subscribe(images, (element) => {
 		console.log(`Image ${element} just entered the viewport!`)
 	}, (element) => {
-		console.log(`Image ${element} just leaved the viewport!`)
+		console.log(`Image ${element} just left the viewport!`)
 	})
 ```
 
@@ -68,6 +68,21 @@ Returns the `viewObserver` instance.
 Type: `String` `Array`
 
 #### enterCallback, leaveCallback
+
+Type: `Function`
+
+### `subscribeOnce(elements, [enterCallback])`
+
+Subscribes for changes in the observed elements. This is called at most once.
+The function `enterCallback` is called when the target `element` enters the specified threshold.
+
+Returns the `viewObserver` instance.
+
+#### elements
+
+Type: `String` `Array`
+
+#### enterCallback
 
 Type: `Function`
 

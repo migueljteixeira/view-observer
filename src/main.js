@@ -29,9 +29,10 @@ class ViewObserver {
   }
 
   /**
+   * Adds an element (or a collection of elements) to the set of target elements
+   * being watched by the IntersectionObserver
    *
-   *
-   * @param {any} nodes
+   * @param {String|Array} nodes
    * @returns
    */
   observe(nodes) {
@@ -41,9 +42,9 @@ class ViewObserver {
   }
 
   /**
+   * Stops observing the specified element (or a collection of elements)
    *
-   *
-   * @param {any} nodes
+   * @param {String|Array} nodes
    * @returns
    */
   unobserve(nodes) {
@@ -53,11 +54,11 @@ class ViewObserver {
   }
 
   /**
+   * Subscribes for changes in the observed elements.
    *
-   *
-   * @param {any} nodes
-   * @param {any} enterCallback
-   * @param {any} leaveCallback
+   * @param {String|Array} nodes
+   * @param {Function} enterCallback
+   * @param {Function} leaveCallback
    * @returns
    */
   subscribe(nodes, enterCallback, leaveCallback) {
@@ -69,10 +70,10 @@ class ViewObserver {
   }
 
   /**
+   * Subscribes for changes in the observed elements.
    *
-   *
-   * @param {any} nodes
-   * @param {any} enterCallback
+   * @param {String|Array} nodes
+   * @param {Function} enterCallback
    * @returns
    */
   subscribeOnce(nodes, enterCallback) {
@@ -84,16 +85,15 @@ class ViewObserver {
   }
 
   /**
-   *
-   *
+   * Stops watching all of target elements for visibility changes.
    */
   disconnect() {
     this.intersectionObserver.disconnect();
   }
 
   /**
-   *
-   *
+   * Returns an array of IntersectionObserverEntry objects, one for each targeted element
+   * which has experienced an intersection change since the last time the intersections were checked
    * @returns
    */
   takeRecords() {
