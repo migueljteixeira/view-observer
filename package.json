@@ -1,6 +1,6 @@
 {
   "name": "view-observer",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Wrapper around Intersection Observer with added functionality.",
   "source": "src/main.js",
   "main": "dist/view-observer.umd.js",
