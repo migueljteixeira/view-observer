@@ -29,7 +29,8 @@ class ViewObserver {
   }
 
   /**
-   * Adds an element (or a collection of elements) to the set of target elements being watched by the IntersectionObserver
+   * Adds an element (or a collection of elements) to the set of target elements
+   * being watched by the IntersectionObserver
    *
    * @param {String|Array} nodes
    * @returns

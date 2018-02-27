@@ -29,7 +29,7 @@ viewObserver().observe([footer, images])
 	.subscribe(images, (element) => {
 		console.log(`Image ${element} just entered the viewport!`)
 	}, (element) => {
-		console.log(`Image ${element} just leaved the viewport!`)
+		console.log(`Image ${element} just left the viewport!`)
 	})
 ```
 
