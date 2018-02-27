@@ -71,6 +71,21 @@ Type: `String` `Array`
 
 Type: `Function`
 
+### `subscribeOnce(elements, [enterCallback])`
+
+Subscribes for changes in the observed elements. This is called at most once.
+The function `enterCallback` is called when the target `element` enters the specified threshold.
+
+Returns the `viewObserver` instance.
+
+#### elements
+
+Type: `String` `Array`
+
+#### enterCallback
+
+Type: `Function`
+
 ## License
 
 [MIT](https://oss.ninja/mit/migueljteixeira)
